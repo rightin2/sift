@@ -1,0 +1,49 @@
+name: Sift
+options:
+  bundleIdPrefix: com.jeanlucalder
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  SiftCore:
+    path: SiftCore
+targets:
+  Sift:
+    type: application
+    platform: macOS
+    sources:
+      - path: App
+        excludes:
+          - "Sift.icon"
+          - "Sift.icon/**"
+      # The Icon Composer icon is one document, compiled into the app's Liquid Glass icon.
+      - path: App/Sift.icon
+        type: file
+        buildPhase: resources
+    dependencies:
+      - package: SiftCore
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Sift
+        LSApplicationCategoryType: public.app-category.productivity
+        NSDownloadsFolderUsageDescription: Sift shows the files in Downloads so you can save or ditch them.
+        NSDesktopFolderUsageDescription: Sift shows the files on your Desktop so you can save or ditch them.
+        NSDocumentsFolderUsageDescription: Sift shows the files in Documents so you can save or ditch them.
+        # Lets Finder's Open With and the Dock icon hand Sift a folder.
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Folder
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes:
+              - public.folder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jeanlucalder.sift
+        SWIFT_VERSION: "6.0"
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: Sift

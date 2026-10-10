@@ -10,12 +10,50 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/macOS-26-3E8E8A" alt="macOS 26">
+  <img src="https://img.shields.io/badge/SwiftUI-Liquid%20Glass-4a6741" alt="SwiftUI with Liquid Glass">
+  <img src="https://img.shields.io/badge/licence-MIT-5B6C8F" alt="MIT licence">
+</p>
+
+<p align="center">
   <img src="docs/sift.gif" width="900" alt="Sifting a Downloads folder: files are saved or ditched with one key and fly into their piles">
 </p>
 
 Photo apps have had swipe-to-clean for years. Sift brings it to the rest of your Mac: point it at Downloads, your Desktop or any folder, and work through it the way you would a stack of paper. Each file shows a live Quick Look preview between a Saved pile and a Ditched pile. When you finish, you check the list once, and ditched files go to the Bin, where you can still put them back.
 
 It is a native macOS 26 app, written in SwiftUI with Liquid Glass.
+
+## Install
+
+Sift is built from source for now, so there is no download yet. You need macOS 26, Xcode 26 and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
+
+```bash
+brew install xcodegen
+git clone https://github.com/rightin2/sift.git
+cd sift
+scripts/install.sh
+```
+
+The script builds a Release copy and installs it in `/Applications`. To update, run `git pull` and `scripts/install.sh` again.
+
+To remove Sift, turn off **Open Sift at login** in its settings if you turned it on, move Sift from Applications to the Bin, and delete `~/Library/Application Support/Sift`, where it remembers past sifts.
+
+<details>
+<summary><b>Working on Sift</b></summary>
+
+Run `xcodegen generate` and open `Sift.xcodeproj`. The engine (scanning, decisions, undo, memory and the Bin) is a separate Swift package with its own tests:
+
+```bash
+cd SiftCore && swift test
+```
+
+</details>
+
+## Quick start
+
+1. Open Sift and pick Downloads or Desktop, press **Choose a folder** for any other, or drop a folder on the window.
+2. Press **S** to save or **D** to ditch each file. **E** or Space looks closer, and ⌘Z undoes.
+3. Press ⌘↩ when you are done. Check the list once, and ditched files go to the Bin, where you can still put them back.
 
 ## What it does
 
@@ -56,25 +94,6 @@ Left hand decides, right hand moves. Every key is also in the Sifting menu.
 | ⌘F, ⌘G | Find by name, find next |
 | ⌘Z | Undo, in whichever folder it happened |
 | ⌘↩ | Finish and review what goes to the Bin |
-
-## Install
-
-Sift is built from source for now. You need macOS 26, Xcode 26 and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
-
-```bash
-brew install xcodegen
-git clone https://github.com/rightin2/sift.git
-cd sift
-scripts/install.sh
-```
-
-The script builds a Release copy and installs it in `/Applications`. To work on it instead, run `xcodegen generate` and open `Sift.xcodeproj`.
-
-The engine (scanning, decisions, undo, memory and the Bin) is a separate Swift package with its own tests:
-
-```bash
-cd SiftCore && swift test
-```
 
 ## Privacy
 

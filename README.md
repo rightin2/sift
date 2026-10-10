@@ -1,22 +1,34 @@
 <p align="center">
-  <img src="docs/icon.png" width="128" alt="Sift app icon">
+  <img src="docs/icon.png" width="128" height="128" alt="Sift app icon: a frosted page in front of a green card and an orange card, on a cream rounded square">
 </p>
 
 <h1 align="center">Sift</h1>
 
 <p align="center">
-  Clear out a messy folder one file at a time.<br>
-  See a real preview of everything, press <b>S</b> to save or <b>D</b> to ditch, and nothing leaves until you say so.
+  <b>Clear out a messy folder one file at a time.</b><br>
+  See a real preview of everything, press <kbd>S</kbd> to save or <kbd>D</kbd> to ditch, and nothing leaves until you say so.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/macOS-26-3E8E8A" alt="macOS 26">
-  <img src="https://img.shields.io/badge/SwiftUI-Liquid%20Glass-4a6741" alt="SwiftUI with Liquid Glass">
-  <img src="https://img.shields.io/badge/licence-MIT-5B6C8F" alt="MIT licence">
+  <img src="https://img.shields.io/badge/macOS-26-3E8E8A?logo=apple&logoColor=white" alt="macOS 26">
+  <img src="https://img.shields.io/badge/SwiftUI-Liquid%20Glass-4a6741?logo=swift&logoColor=white" alt="SwiftUI with Liquid Glass">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-5B6C8F" alt="MIT licence"></a></p>
+
+<p align="center">
+  <a href="#install"><b>Install</b></a>
+  &nbsp;&middot;&nbsp;
+  <a href="#quick-start"><b>Quick start</b></a>
+  &nbsp;&middot;&nbsp;
+  <a href="#keys"><b>Keys</b></a>
+  &nbsp;&middot;&nbsp;
+  <a href="#privacy"><b>Privacy</b></a>
 </p>
 
 <p align="center">
-  <img src="docs/sift.gif" width="900" alt="Sifting a Downloads folder: files are saved or ditched with one key and fly into their piles">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="docs/sifting.png">
+    <img src="docs/hero.gif" width="100%" alt="Sifting a Downloads folder in Sift. Pressing S saves an invoice PDF, which flies into the Saved pile as its count goes from 4 to 5. Pressing D ditches a disk image into the Ditched pile. A folder card showing the photos inside is saved next, and each time the next file rises into place with a live preview.">
+  </picture>
 </p>
 
 Photo apps have had swipe-to-clean for years. Sift brings it to the rest of your Mac: point it at Downloads, your Desktop or any folder, and work through it the way you would a stack of paper. Each file shows a live Quick Look preview between a Saved pile and a Ditched pile. When you finish, you check the list once, and ditched files go to the Bin, where you can still put them back.
@@ -55,6 +67,30 @@ cd SiftCore && swift test
 2. Press **S** to save or **D** to ditch each file. **E** or Space looks closer, and ⌘Z undoes.
 3. Press ⌘↩ when you are done. Check the list once, and ditched files go to the Bin, where you can still put them back.
 
+## How it works
+
+### Step into folders
+
+A Finder-style column view shows where you are. Press <kbd>→</kbd> to sift inside a folder and <kbd>←</kbd> to come back up; each folder keeps its own decisions.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="docs/folder.png">
+    <img src="docs/folders.gif" width="100%" alt="Pressing the right arrow on the Holiday photos folder: the selection moves into the folder's column and its first photo, Beach 01.jpg, fills the card. S saves it into the Saved pile and D ditches Beach 03.jpg into the Ditched pile. The left arrow goes back up to the folder, where both photos now show their tick and bin marks.">
+  </picture>
+</p>
+
+### Nothing moves until you confirm
+
+Press <kbd>⌘</kbd><kbd>↩</kbd> when you are done. Sift lists everything that will go to the Bin, by folder, and moves nothing until you confirm. The Done screen shows the space you freed, and <b>Review ditched</b> puts back anything you still need.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="docs/confirm.png">
+    <img src="docs/safety.gif" width="100%" alt="Pressing Command Return opens the confirm sheet: Move 4 files to the Bin, which frees 2.4 MB, listing each file by folder with a Save button beside it. Return presses Move to Bin. The Done screen reads Sifted 10 files across 2 folders, Freed 2.4 MB, with the Review ditched button highlighted.">
+  </picture>
+</p>
+
 ## What it does
 
 - **Real previews of everything.** Images, PDFs, documents, spreadsheets, audio and video preview live in the card. Folders show what's inside, archives and apps show their contents without unpacking, and anything Quick Look can't draw gets a card with the site it was downloaded from.
@@ -64,17 +100,34 @@ cd SiftCore && swift test
 - **Safe by design.** Nothing moves until you confirm. Every file is checked against what you saw before it moves, a ditched folder holding files you saved is flagged, and everything goes to the Bin, never a hard delete. The Done screen can put it all back.
 - **Optional reminders.** Sift can watch Downloads from the menu bar and nudge you when ten or more files arrive in a day.
 
-<p align="center">
-  <img src="docs/folders.gif" width="900" alt="Stepping into a folder of photos with the right arrow and sifting the photos inside it">
-</p>
-
 ## Screenshots
 
-| | |
-|---|---|
-| <img src="docs/sifting.png" alt="Sifting an invoice PDF, with the Saved and Ditched piles either side"> | <img src="docs/folder.png" alt="A folder card showing the photos inside, with the next column peeking in"> |
-| <img src="docs/archive.png" alt="Looking inside a zip archive without unpacking it"> | <img src="docs/info.png" alt="A disk image's info card showing the site it came from, found with find by name"> |
-| <img src="docs/confirm.png" alt="The confirm sheet, listing everything that will go to the Bin by folder"> | <img src="docs/done.png" alt="The Done screen, showing how much space was freed"> |
+<table>
+  <tr>
+    <td width="50%"><img src="docs/sifting.png" alt="Sifting an invoice PDF, with the Saved and Ditched piles either side"></td>
+    <td width="50%"><img src="docs/folder.png" alt="A folder card showing the photos inside, with the next column peeking in"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>A live preview between the two piles</sub></td>
+    <td align="center"><sub>Folders show what's inside</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/archive.png" alt="Looking inside a zip archive without unpacking it"></td>
+    <td width="50%"><img src="docs/info.png" alt="A disk image's info card showing the site it came from, found with find by name"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Archives open without unpacking</sub></td>
+    <td align="center"><sub>Find by name, and where a file came from</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/confirm.png" alt="The confirm sheet, listing everything that will go to the Bin by folder"></td>
+    <td width="50%"><img src="docs/done.png" alt="The Done screen, showing how much space was freed"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>One check before anything moves</sub></td>
+    <td align="center"><sub>Space freed, and a way back</sub></td>
+  </tr>
+</table>
 
 All screenshots are dark mode with the window's transparency turned up; Sift follows your Mac's light or dark setting.
 
@@ -84,16 +137,16 @@ Left hand decides, right hand moves. Every key is also in the Sifting menu.
 
 | Key | Does |
 |---|---|
-| S, or swipe left | Save |
-| D, or swipe right | Ditch |
-| ⌥S / ⌥D | Save or ditch everything left in this folder (ditch asks first) |
-| E or Space | Look closer: Quick Look, or the contents of an archive or app |
-| ↑ ↓ | Move without deciding |
-| → / ← | Sift inside a folder / go back up |
-| N / ⇧N | Next or previous undecided file |
-| ⌘F, ⌘G | Find by name, find next |
-| ⌘Z | Undo, in whichever folder it happened |
-| ⌘↩ | Finish and review what goes to the Bin |
+| <kbd>S</kbd>, or swipe left | Save |
+| <kbd>D</kbd>, or swipe right | Ditch |
+| <kbd>⌥S</kbd> / <kbd>⌥D</kbd> | Save or ditch everything left in this folder (ditch asks first) |
+| <kbd>E</kbd> or <kbd>Space</kbd> | Look closer: Quick Look, or the contents of an archive or app |
+| <kbd>↑</kbd> <kbd>↓</kbd> | Move without deciding |
+| <kbd>→</kbd> / <kbd>←</kbd> | Sift inside a folder / go back up |
+| <kbd>N</kbd> / <kbd>⇧N</kbd> | Next or previous undecided file |
+| <kbd>⌘F</kbd>, <kbd>⌘G</kbd> | Find by name, find next |
+| <kbd>⌘Z</kbd> | Undo, in whichever folder it happened |
+| <kbd>⌘↩</kbd> | Finish and review what goes to the Bin |
 
 ## Privacy
 
